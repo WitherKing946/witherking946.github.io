@@ -46,68 +46,38 @@
   /* Side-Rail Circuit Overlay */
   .circuit-container {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1;
+    top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: 1;
   }
-
   #circuitPath, #divergingPath {
-    stroke: var(--circuit-color);
-    stroke-width: 2.5;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    fill: none;
+    stroke: var(--circuit-color); stroke-width: 2.5; stroke-linecap: round;
+    stroke-linejoin: round; fill: none;
     filter: drop-shadow(0px 0px 6px var(--circuit-glow));
     transition: stroke-dashoffset 0.1s linear;
   }
-
-  #divergingPath {
-    stroke-dasharray: 4 4;
-    opacity: 0.85;
-  }
-
-  /* Dynamic Section Via Indicators & Component Pads */
+  #divergingPath { stroke-dasharray: 4 4; opacity: 0.85; }
   .via-node {
-    fill: var(--bg);
-    stroke: var(--muted);
-    stroke-width: 2;
+    fill: var(--bg); stroke: var(--muted); stroke-width: 2;
     transition: stroke 0.4s ease, fill 0.4s ease, filter 0.4s ease;
   }
-
   .via-node.lit {
-    stroke: var(--circuit-color);
-    fill: var(--copper-bright);
+    stroke: var(--circuit-color); fill: var(--copper-bright);
     filter: drop-shadow(0px 0px 8px var(--circuit-glow));
   }
-
-  main {
-    position: relative;
-    z-index: 2;
-  }
+  main { position: relative; z-index: 2; }
 
   /* Navigation */
   nav {
     position: fixed; top: 0; right: 0; z-index: 10;
-    padding: 22px 32px;
-    display: flex; gap: 26px;
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
+    padding: 22px 32px; display: flex; gap: 26px;
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px;
+    letter-spacing: 0.06em; text-transform: uppercase;
   }
-  nav a {
-    text-decoration: none; color: var(--muted);
-    position: relative;
-    transition: color .2s ease;
-  }
+  nav a { text-decoration: none; color: var(--muted); position: relative; transition: color .2s ease; }
   nav a:hover, nav a:focus-visible { color: var(--copper-bright); }
   nav a::after {
-    content: ''; position: absolute; left: 0; bottom: -4px;
-    width: 0; height: 1px; background: var(--copper-bright);
-    transition: width .25s ease;
+    content: ''; position: absolute; left: 0; bottom: -4px; width: 0; height: 1px;
+    background: var(--copper-bright); transition: width .25s ease;
   }
   nav a:hover::after, nav a:focus-visible::after { width: 100%; }
   @media (max-width: 640px) { nav { display: none; } }
@@ -115,254 +85,74 @@
   /* Section Styles */
   section { 
     padding: min(14vh, 120px) 8vw min(14vh, 120px) max(10vw, 80px); 
-    position: relative; 
-    transition: opacity 0.5s ease, filter 0.5s ease;
+    position: relative; transition: opacity 0.5s ease, filter 0.5s ease;
   }
-
-  /* Active Section Glow Effect */
-  section.section-active {
-    filter: drop-shadow(0px 0px 2px rgba(194, 136, 79, 0.2));
-  }
-
-  .eyebrow {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 12px;
-    color: var(--copper);
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    display: flex; align-items: center; gap: 10px;
-    margin-bottom: 18px;
-    transition: color 0.4s ease;
-  }
+  section.section-active { filter: drop-shadow(0px 0px 2px rgba(194, 136, 79, 0.2)); }
   
-  section.section-active .eyebrow {
-    color: var(--copper-bright);
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--copper);
+    letter-spacing: 0.14em; text-transform: uppercase; display: flex; align-items: center; gap: 10px;
+    margin-bottom: 18px; transition: color 0.4s ease;
   }
-
-  .eyebrow::before {
-    content: ''; width: 18px; height: 1px; background: var(--copper);
-    transition: background 0.4s ease;
-  }
-
-  section.section-active .eyebrow::before {
-    background: var(--copper-bright);
-  }
+  section.section-active .eyebrow { color: var(--copper-bright); }
+  .eyebrow::before { content: ''; width: 18px; height: 1px; background: var(--copper); transition: background 0.4s ease; }
+  section.section-active .eyebrow::before { background: var(--copper-bright); }
 
   /* Hero Section */
-  .hero {
-    min-height: 100vh;
-    display: flex; flex-direction: column; justify-content: center;
-    padding-top: 80px;
-    position: relative;
-  }
-
-  .hero-bg-svg {
-    position: absolute;
-    right: 0; top: 20%;
-    width: 50%; max-width: 600px; height: auto;
-    opacity: 0.18;
-    pointer-events: none;
-    z-index: 0;
-  }
-
-  .hero-content {
-    position: relative;
-    z-index: 1;
-  }
-
-  .hero h1 {
-    font-size: clamp(44px, 8vw, 100px);
-    line-height: 0.98;
-    color: var(--cream);
-  }
+  .hero { min-height: 100vh; display: flex; flex-direction: column; justify-content: center; padding-top: 80px; position: relative; }
+  .hero-bg-svg { position: absolute; right: 0; top: 20%; width: 50%; max-width: 600px; height: auto; opacity: 0.18; pointer-events: none; z-index: 0; }
+  .hero-content { position: relative; z-index: 1; }
+  .hero h1 { font-size: clamp(44px, 8vw, 100px); line-height: 0.98; color: var(--cream); }
   .hero h1 span { color: var(--copper-bright); }
 
   .hero-tag {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: clamp(14px, 1.8vw, 18px);
-    color: var(--phosphor);
-    margin-top: 24px;
-    margin-bottom: 12px;
-    display: inline-flex;
-    align-items: center;
+    font-family: 'IBM Plex Mono', monospace; font-size: clamp(14px, 1.8vw, 18px);
+    color: var(--phosphor); margin-top: 24px; margin-bottom: 12px; display: inline-flex; align-items: center;
   }
-  .cursor {
-    display: inline-block;
-    width: 9px;
-    height: 1.1em;
-    background: var(--led);
-    margin-left: 4px;
-    animation: blink 1s step-end infinite;
-  }
+  .cursor { display: inline-block; width: 9px; height: 1.1em; background: var(--led); margin-left: 4px; animation: blink 1s step-end infinite; }
   @keyframes blink { 50% { opacity: 0; } }
 
-  .hero-sub {
-    max-width: 580px; margin-top: 16px;
-    color: var(--muted); font-size: 17px;
-  }
-
-  .scroll-cue {
-    margin-top: 50px;
-    display: inline-flex;
-    align-items: center;
-    color: var(--copper-bright);
-    text-decoration: none;
-    width: fit-content;
-  }
-  
-  .scroll-icon {
-    width: 20px; height: 32px;
-    border: 1.5px solid var(--copper);
-    border-radius: 12px;
-    position: relative;
-    display: flex; justify-content: center;
-    transition: border-color 0.2s ease;
-  }
+  .hero-sub { max-width: 580px; margin-top: 16px; color: var(--muted); font-size: 17px; }
+  .scroll-cue { margin-top: 50px; display: inline-flex; align-items: center; color: var(--copper-bright); text-decoration: none; width: fit-content; }
+  .scroll-icon { width: 20px; height: 32px; border: 1.5px solid var(--copper); border-radius: 12px; position: relative; display: flex; justify-content: center; transition: border-color 0.2s ease; }
   .scroll-cue:hover .scroll-icon { border-color: var(--copper-bright); }
-  
-  .scroll-dot {
-    width: 3px; height: 6px;
-    background: var(--copper-bright);
-    border-radius: 2px;
-    position: absolute; top: 6px;
-    animation: smoothScroll 2s cubic-bezier(0.65, 0, 0.35, 1) infinite;
-  }
-
-  @keyframes smoothScroll {
-    0% { transform: translateY(0); opacity: 0; }
-    30% { opacity: 1; }
-    80% { transform: translateY(12px); opacity: 0; }
-    100% { transform: translateY(12px); opacity: 0; }
-  }
+  .scroll-dot { width: 3px; height: 6px; background: var(--copper-bright); border-radius: 2px; position: absolute; top: 6px; animation: smoothScroll 2s cubic-bezier(0.65, 0, 0.35, 1) infinite; }
+  @keyframes smoothScroll { 0% { transform: translateY(0); opacity: 0; } 30% { opacity: 1; } 80% { transform: translateY(12px); opacity: 0; } 100% { transform: translateY(12px); opacity: 0; } }
 
   /* About Section */
-  .about-grid {
-    display: grid; grid-template-columns: 1fr 1fr; gap: 32px;
-    margin-top: 40px;
-  }
+  .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 32px; margin-top: 40px; }
   @media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; } }
-
-  .about-card {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 34px;
-    transition: border-color 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  section.section-active .about-card {
-    border-color: rgba(194, 136, 79, 0.3);
-  }
-
-  .about-card h3 {
-    font-size: 20px; margin-bottom: 14px; color: var(--copper-bright);
-    display: flex; align-items: center; gap: 10px;
-  }
+  .about-card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 34px; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+  section.section-active .about-card { border-color: rgba(194, 136, 79, 0.3); }
+  .about-card h3 { font-size: 20px; margin-bottom: 14px; color: var(--copper-bright); display: flex; align-items: center; gap: 10px; }
   .about-card p { color: var(--muted); font-size: 15px; }
   .about-card .icon { width: 22px; height: 22px; flex: none; }
   .lede { max-width: 680px; font-size: 19px; color: var(--cream); }
   .lede em { font-style: normal; color: var(--phosphor); }
 
-  /* Technical Skills Layout */
-  .skills-bus-container {
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    gap: 32px;
-  }
-
-  .skills-group {
-    position: relative;
-    padding-left: 24px;
-    border-left: 2px solid var(--line);
-    transition: border-color 0.3s ease;
-  }
-
-  section.section-active .skills-group {
-    border-left-color: var(--copper);
-  }
-
-  .skills-group-header {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    margin-bottom: 14px;
-  }
-
-  .skills-group-header .bus-node {
-    width: 8px;
-    height: 8px;
-    background: var(--copper);
-    border-radius: 50%;
-    margin-left: -29px;
-  }
-
-  .skills-group-header h3 {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 15px;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--copper-bright);
-  }
-
-  .skills-terminal-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 12px 24px;
-  }
-
-  .skill-node {
-    font-family: 'IBM Plex Mono', monospace;
-    font-size: 13px;
-    color: var(--cream);
-    display: inline-flex;
-    align-items: center;
-    gap: 8px;
-    background: var(--panel);
-    padding: 6px 14px;
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    transition: all 0.2s ease;
-  }
-
-  .skill-node::before {
-    content: '›';
-    color: var(--phosphor);
-    font-weight: bold;
-  }
-
-  .skill-node:hover {
-    border-color: var(--copper-bright);
-    color: var(--copper-bright);
-    transform: translateX(4px);
-  }
+  /* Technical Skills Configured Layout */
+  .skills-bus-container { margin-top: 40px; display: flex; flex-direction: column; gap: 32px; max-width: 700px; }
+  .skills-group { position: relative; padding-left: 24px; border-left: 2px solid var(--line); transition: border-color 0.3s ease; }
+  section.section-active .skills-group { border-left-color: var(--copper); }
+  .skills-group-header { display: flex; align-items: center; gap: 12px; margin-bottom: 20px; }
+  .skills-group-header .bus-node { width: 8px; height: 8px; background: var(--copper); border-radius: 50%; margin-left: -29px; }
+  .skills-group-header h3 { font-family: 'IBM Plex Mono', monospace; font-size: 15px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--copper-bright); }
+  
+  /* Progress Bars */
+  .skills-bars-list { display: flex; flex-direction: column; gap: 14px; }
+  .skill-bar { display: flex; flex-direction: column; gap: 6px; }
+  .skill-meta { display: flex; justify-content: space-between; font-family: 'IBM Plex Mono', monospace; font-size: 13px; color: var(--cream); }
+  .skill-meta span:last-child { color: var(--phosphor); }
+  .skill-track { width: 100%; height: 4px; background: var(--bg-deep); border: 1px solid var(--line); border-radius: 2px; overflow: hidden; }
+  .skill-fill { height: 100%; background: var(--copper-bright); width: 0%; transition: width 1.2s cubic-bezier(0.16, 1, 0.3, 1); }
 
   /* Selected Work */
-  .project-grid {
-    display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 26px; margin-top: 44px;
-  }
-  .card {
-    background: var(--panel);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 28px;
-    position: relative;
-    overflow: hidden;
-    transition: transform .3s ease, border-color .3s ease;
-  }
+  .project-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 26px; margin-top: 44px; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: var(--radius); padding: 28px; position: relative; overflow: hidden; transition: transform .3s ease, border-color .3s ease; }
   .card:hover { transform: translateY(-4px); border-color: var(--copper); }
-  .card::before {
-    content: ''; position: absolute; top: 0; left: 0; height: 2px; width: 0;
-    background: var(--copper-bright); transition: width .4s ease;
-  }
+  .card::before { content: ''; position: absolute; top: 0; left: 0; height: 2px; width: 0; background: var(--copper-bright); transition: width .4s ease; }
   .card:hover::before { width: 100%; }
-  .tag {
-    display: inline-block; font-family: 'IBM Plex Mono', monospace;
-    font-size: 10px; letter-spacing: .08em; text-transform: uppercase;
-    padding: 4px 9px; border-radius: 20px; margin-bottom: 14px;
-    border: 1px solid var(--line); color: var(--muted);
-  }
+  .tag { display: inline-block; font-family: 'IBM Plex Mono', monospace; font-size: 10px; letter-spacing: .08em; text-transform: uppercase; padding: 4px 9px; border-radius: 20px; margin-bottom: 14px; border: 1px solid var(--line); color: var(--muted); }
   .tag.hw { color: var(--led); border-color: rgba(255,180,84,0.35); }
   .tag.sw { color: var(--phosphor); border-color: rgba(127,224,196,0.35); }
   .card h3 { font-size: 19px; margin-bottom: 10px; }
@@ -372,70 +162,34 @@
 
   /* Timeline */
   .timeline { margin-top: 50px; position: relative; }
-  .t-item {
-    display: grid; grid-template-columns: 110px 24px 1fr;
-    gap: 0 22px; padding-bottom: 44px; position: relative;
-  }
+  .t-item { display: grid; grid-template-columns: 110px 24px 1fr; gap: 0 22px; padding-bottom: 44px; position: relative; }
   .t-item:last-child { padding-bottom: 0; }
   .t-time { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--muted); padding-top: 3px; }
   .t-node-col { position: relative; display: flex; justify-content: center; }
-  .t-node-col::before {
-    content: ''; position: absolute; top: 6px; bottom: -44px; width: 1px; background: var(--line);
-  }
+  .t-node-col::before { content: ''; position: absolute; top: 6px; bottom: -44px; width: 1px; background: var(--line); }
   .t-item:last-child .t-node-col::before { display: none; }
-  .t-node {
-    width: 12px; height: 12px; border-radius: 50%;
-    background: var(--bg); border: 2px solid var(--copper);
-    margin-top: 2px; position: relative; z-index: 1;
-  }
+  .t-node { width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--copper); margin-top: 2px; position: relative; z-index: 1; }
   .t-body h3 { font-size: 17px; margin-bottom: 6px; }
   .t-body p { color: var(--muted); font-size: 14px; }
 
-  /* Experience Scroll Reveal Animation */
-  .experience-animate {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  .experience-animate.is-visible {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  /* Utilities */
+  .experience-animate { opacity: 0; transform: translateY(40px); transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+  .experience-animate.is-visible { opacity: 1; transform: translateY(0); }
+  .reveal { opacity: 0; transform: translateY(24px); }
 
   /* Terminal Contact */
-  .terminal {
-    max-width: 680px; margin-top: 40px;
-    background: var(--bg-deep); border: 1px solid var(--line); border-radius: var(--radius);
-    font-family: 'IBM Plex Mono', monospace; font-size: 14px;
-    overflow: hidden;
-    transition: border-color 0.3s ease;
-  }
-  section.section-active .terminal {
-    border-color: rgba(194, 136, 79, 0.3);
-  }
+  .terminal { max-width: 680px; margin-top: 40px; background: var(--bg-deep); border: 1px solid var(--line); border-radius: var(--radius); font-family: 'IBM Plex Mono', monospace; font-size: 14px; overflow: hidden; transition: border-color 0.3s ease; }
+  section.section-active .terminal { border-color: rgba(194, 136, 79, 0.3); }
   .terminal-bar { display: flex; gap: 7px; padding: 12px 16px; border-bottom: 1px solid var(--line); }
   .terminal-bar span { width: 10px; height: 10px; border-radius: 50%; background: var(--line); }
   .terminal-body { padding: 24px; color: var(--phosphor); }
   .terminal-body .prompt { color: var(--copper-bright); }
   .terminal-body .out { color: var(--muted); margin: 6px 0 18px; }
   .contact-links { display: flex; gap: 16px; flex-wrap: wrap; margin-top: 12px; }
-  .contact-links a {
-    text-decoration: none; color: var(--cream);
-    border: 1px solid var(--line); padding: 10px 18px; border-radius: var(--radius);
-    font-family: 'IBM Plex Mono', monospace; font-size: 13px;
-    transition: border-color .2s ease, color .2s ease, background .2s ease;
-    word-break: break-all;
-  }
+  .contact-links a { text-decoration: none; color: var(--cream); border: 1px solid var(--line); padding: 10px 18px; border-radius: var(--radius); font-family: 'IBM Plex Mono', monospace; font-size: 13px; transition: border-color .2s ease, color .2s ease, background .2s ease; word-break: break-all; }
   .contact-links a:hover { border-color: var(--copper-bright); color: var(--copper-bright); background: var(--panel); }
 
-  footer {
-    padding: 30px 8vw 50px max(10vw, 80px); color: var(--muted);
-    font-family: 'IBM Plex Mono', monospace; font-size: 12px;
-    display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px;
-  }
-
-  .reveal { opacity: 0; transform: translateY(24px); }
+  footer { padding: 30px 8vw 50px max(10vw, 80px); color: var(--muted); font-family: 'IBM Plex Mono', monospace; font-size: 12px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
 
   @media (prefers-reduced-motion: reduce) {
     * { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
@@ -444,7 +198,7 @@
 </head>
 <body>
 
-<!-- Side-Rail SVG Background Circuit Line & Complex PCB Routing -->
+<!-- Side-Rail SVG Background Circuit Line -->
 <svg class="circuit-container" id="svgCanvas">
   <path id="circuitPath" />
   <path id="divergingPath" />
@@ -476,7 +230,7 @@
     </svg>
 
     <div class="hero-content">
-      <h1>Madhavan<br><span>builds hardware &amp;</span><br>ships embedded systems.</h1>
+      <h1 id="dynamic-headline">Madhavan<br><span>builds things that</span><br>blink, sense &amp; ship.</h1>
       
       <div class="hero-tag">
         <span id="typeTarget"></span><span class="cursor"></span>
@@ -495,7 +249,7 @@
     <p class="lede">I build across both hardware and software — designing <em>printed circuit boards</em> that connect to physical sensors and structuring <em>embedded architectures</em> that drive them.</p>
 
     <div class="about-grid">
-      <div class="about-card">
+      <div class="about-card reveal">
         <h3>
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
             <rect x="8" y="8" width="8" height="8" rx="1"/>
@@ -503,16 +257,16 @@
           </svg>
           Hardware &amp; PCB Design
         </h3>
-        <p>Schematic capture, PCB layout, power management circuits (USB-C and LDOs), and trace routing for sensors. Experience includes custom board design for ESP32 and STM32 microcontrollers.</p>
+        <p>Schematic capture, PCB layout, power management circuits, and trace routing. Experience includes custom board design for ESP32 and STM32 microcontrollers.</p>
       </div>
-      <div class="about-card">
+      <div class="about-card reveal">
         <h3>
           <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6">
             <path d="M8 6L2 12l6 6M16 6l6 6-6 6M14 4l-4 16"/>
           </svg>
           Systems &amp; Software
         </h3>
-        <p>Embedded system integration, hardware interface protocols (I2C, SPI, UART), mobile application development, and user interfaces for live telemetry data.</p>
+        <p>Embedded system integration, hardware interface protocols, mobile application development, and user interfaces for live telemetry data.</p>
       </div>
     </div>
   </section>
@@ -520,99 +274,17 @@
   <section id="skills">
     <div class="eyebrow">02 / Technical Skills</div>
     <h2 style="font-size:clamp(28px,4vw,42px);">Tools &amp; Hardware Stack</h2>
-
-    <div class="skills-bus-container">
-      <div class="skills-group reveal">
-        <div class="skills-group-header">
-          <div class="bus-node"></div>
-          <h3>Hardware &amp; PCB Design</h3>
-        </div>
-        <div class="skills-terminal-list">
-          <span class="skill-node">Schematic Capture</span>
-          <span class="skill-node">Custom PCB Layout</span>
-          <span class="skill-node">ESP32 / STM32 Boards</span>
-          <span class="skill-node">Power Management</span>
-          <span class="skill-node">USB-C &amp; LDO Circuits</span>
-          <span class="skill-node">Multi-Layer Routing</span>
-          <span class="skill-node">KiCad / EasyEDA</span>
-        </div>
-      </div>
-
-      <div class="skills-group reveal">
-        <div class="skills-group-header">
-          <div class="bus-node"></div>
-          <h3>Embedded Systems</h3>
-        </div>
-        <div class="skills-terminal-list">
-          <span class="skill-node">I2C / SPI / UART / PWM</span>
-          <span class="skill-node">State Machine Logic</span>
-          <span class="skill-node">Sensor Fusion (IMU / Radar)</span>
-          <span class="skill-node">HX711 Load Cells</span>
-          <span class="skill-node">OLED / LCD Interfaces</span>
-          <span class="skill-node">Hardware Debugging</span>
-        </div>
-      </div>
-
-      <div class="skills-group reveal">
-        <div class="skills-group-header">
-          <div class="bus-node"></div>
-          <h3>Digital Architecture &amp; RTL</h3>
-        </div>
-        <div class="skills-terminal-list">
-          <span class="skill-node">Verilog HDL</span>
-          <span class="skill-node">MIPS Architecture</span>
-          <span class="skill-node">Combinational Logic</span>
-          <span class="skill-node">Timing Analysis</span>
-          <span class="skill-node">CMOS Standard Cells</span>
-        </div>
-      </div>
-
-      <div class="skills-group reveal">
-        <div class="skills-group-header">
-          <div class="bus-node"></div>
-          <h3>Software &amp; Web Stack</h3>
-        </div>
-        <div class="skills-terminal-list">
-          <span class="skill-node">React Native / Expo</span>
-          <span class="skill-node">JavaScript / Anime.js</span>
-          <span class="skill-node">Python</span>
-          <span class="skill-node">Firebase / AsyncStorage</span>
-          <span class="skill-node">Git / GitHub</span>
-        </div>
-      </div>
-    </div>
+    
+    <!-- Dynamic Skills Grid via JSON -->
+    <div id="dynamic-skills" class="skills-bus-container"></div>
   </section>
 
   <section id="work">
     <div class="eyebrow">03 / Selected Projects</div>
     <h2 style="font-size:clamp(28px,4vw,42px);">Things I've built.</h2>
 
-    <div class="project-grid">
-      <div class="card reveal">
-        <span class="tag hw">Hardware</span>
-        <h3>Custom ESP32 Modular Boards</h3>
-        <p>Designed and manufactured custom ESP32 breakout boards with USB power regulation, reset circuits, and sensor headers for fast hardware testing.</p>
-        <div class="stack"><span>KiCad</span><span>ESP32</span><span>LDO Power</span></div>
-      </div>
-      <div class="card reveal">
-        <span class="tag hw">Research</span>
-        <h3>Autonomous Aerial Telemetry Unit</h3>
-        <p>Connected mmWave radar and motion sensors to an aerial research drone to process and send live telemetry data.</p>
-        <div class="stack"><span>ESP32</span><span>mmWave</span><span>Telemetry</span></div>
-      </div>
-      <div class="card reveal">
-        <span class="tag hw">Hardware</span>
-        <h3>Precision Digital Weight System</h3>
-        <p>Built a digital scale using an Arduino Nano, an HX711 amplifier, and a load cell with automatic tare logic and an I2C display.</p>
-        <div class="stack"><span>Arduino</span><span>HX711</span><span>I2C</span></div>
-      </div>
-      <div class="card reveal">
-        <span class="tag sw">Software</span>
-        <h3>Animated Single-Page UI</h3>
-        <p>Created a web interface with smooth timeline animations, interactive SVG paths, and dynamic layout updates.</p>
-        <div class="stack"><span>JavaScript</span><span>Anime.js</span><span>Firebase</span></div>
-      </div>
-    </div>
+    <!-- Dynamic Project Grid via JSON -->
+    <div id="dynamic-projects" class="project-grid"></div>
   </section>
 
   <section id="experience">
@@ -672,25 +344,125 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
 <script>
-document.addEventListener("DOMContentLoaded", () => {
+// Base configuration data - gracefully falls back to this if portfolio.json is missing or throws CORS error
+const defaultData = {
+  skills: [
+    {
+      category: "Hardware & PCB Design",
+      items: [
+        { name: "Custom PCB Layout (KiCad)", percent: 95 },
+        { name: "ESP32 / STM32 Architecture", percent: 90 },
+        { name: "Power Management & LDOs", percent: 85 }
+      ]
+    },
+    {
+      category: "Embedded & RTL Systems",
+      items: [
+        { name: "I2C / SPI / UART Protocols", percent: 95 },
+        { name: "Verilog HDL & Logic Design", percent: 80 },
+        { name: "Sensor Fusion (IMU / Radar)", percent: 85 }
+      ]
+    },
+    {
+      category: "Software & App Stack",
+      items: [
+        { name: "React Native / Expo", percent: 85 },
+        { name: "Firebase & Data Persistence", percent: 80 },
+        { name: "JavaScript / Python", percent: 75 }
+      ]
+    }
+  ],
+  projects: [
+    {
+      title: "Combat Automated Therapy System",
+      tag: "Hardware",
+      tagClass: "hw",
+      desc: "Modular wearable electrotherapy device featuring an STM32 micro-controlled hub linked to digital potentiometers and emergency backup interfaces.",
+      stack: ["STM32", "Electrotherapy", "PCB"]
+    },
+    {
+      title: "xytoolbox Application",
+      tag: "Software",
+      tagClass: "sw",
+      desc: "Modular engineering utility suite application utilizing React Native, Expo, asynchronous storage persistence, and Firebase integration.",
+      stack: ["React Native", "Expo", "Firebase"]
+    },
+    {
+      title: "Autonomous Aerial Telemetry Unit",
+      tag: "Hardware",
+      tagClass: "hw",
+      desc: "Integrated mmWave radar and motion sensors into an aerial drone (Project Vital) to process and send live sub-surface micro-motion telemetry data.",
+      stack: ["ESP32", "mmWave", "Telemetry"]
+    },
+    {
+      title: "Precision Digital Weight System",
+      tag: "Hardware",
+      tagClass: "hw",
+      desc: "Built a digital scale using an Arduino Nano, an HX711 amplifier, and a load cell with automatic tare logic and an I2C display.",
+      stack: ["Arduino", "HX711", "I2C"]
+    }
+  ]
+};
+
+document.addEventListener("DOMContentLoaded", async () => {
+  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // 1. Fetch JSON Data (or use default backup)
+  let siteData = defaultData;
+  try {
+    const response = await fetch('portfolio.json');
+    if (response.ok) siteData = await response.json();
+  } catch (error) {
+    console.log("Using local default data (portfolio.json not found or CORS blocked via local file).");
+  }
+
+  // 2. Render Skills with Progression Bars
+  const skillsContainer = document.getElementById('dynamic-skills');
+  if (skillsContainer && siteData.skills) {
+    skillsContainer.innerHTML = siteData.skills.map(group => `
+      <div class="skills-group reveal">
+        <div class="skills-group-header">
+          <div class="bus-node"></div>
+          <h3>${group.category}</h3>
+        </div>
+        <div class="skills-bars-list">
+          ${group.items.map(skill => `
+            <div class="skill-bar">
+              <div class="skill-meta"><span>${skill.name}</span><span>${skill.percent}%</span></div>
+              <div class="skill-track"><div class="skill-fill" data-percent="${skill.percent}"></div></div>
+            </div>
+          `).join('')}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // 3. Render Projects
+  const projectsContainer = document.getElementById('dynamic-projects');
+  if (projectsContainer && siteData.projects) {
+    projectsContainer.innerHTML = siteData.projects.map(proj => `
+      <div class="card reveal">
+        <span class="tag ${proj.tagClass}">${proj.tag}</span>
+        <h3>${proj.title}</h3>
+        <p>${proj.desc}</p>
+        <div class="stack">
+          ${proj.stack.map(s => `<span>${s}</span>`).join('')}
+        </div>
+      </div>
+    `).join('');
+  }
+
+  // 4. Initialize Core Animations & Graphics
   const svgCanvas = document.getElementById("svgCanvas");
   const path = document.getElementById("circuitPath");
   const divPath = document.getElementById("divergingPath");
   const viaContainer = document.getElementById("viaContainer");
-  const experienceTarget = document.getElementById("experience");
-  const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
   const sections = Array.from(document.querySelectorAll("section"));
   let sectionViaData = [];
 
-  // Build Advanced PCB Bus Routing with 45-degree chamfers, IC Pads, and Dynamic Diverging Branches
   function updateSideCircuitPath() {
-    const docHeight = Math.max(
-      document.body.scrollHeight, 
-      document.documentElement.scrollHeight
-    );
+    const docHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
     const docWidth = window.innerWidth;
-    
     const mainRailX = Math.max(30, Math.min(docWidth * 0.05, 45));
     const branchX = mainRailX + 35;
 
@@ -699,82 +471,34 @@ document.addEventListener("DOMContentLoaded", () => {
     sectionViaData = [];
 
     let pathD = `M ${mainRailX},0 `;
-    
-    // Pick branch points for diverging random-endpoint routing
     let divBranchStartY = docHeight * 0.35;
     let divTargetX = Math.min(docWidth * 0.85, mainRailX + 280);
     let divTargetY = docHeight * 0.52;
 
-    sections.forEach((sec, idx) => {
+    sections.forEach((sec) => {
       const rect = sec.getBoundingClientRect();
       const secY = rect.top + window.scrollY + 35;
       
-      // 45-degree trace routing into the section via node
-      pathD += `L ${mainRailX},${secY - 25} `;
-      pathD += `L ${mainRailX + 10},${secY - 15} `;
-      pathD += `L ${branchX - 10},${secY - 15} `;
-      pathD += `L ${branchX},${secY} `;
-      pathD += `L ${branchX - 10},${secY + 15} `;
-      pathD += `L ${mainRailX + 10},${secY + 15} `;
-      pathD += `L ${mainRailX},${secY + 25} `;
+      pathD += `L ${mainRailX},${secY - 25} L ${mainRailX + 10},${secY - 15} L ${branchX - 10},${secY - 15} L ${branchX},${secY} L ${branchX - 10},${secY + 15} L ${mainRailX + 10},${secY + 15} L ${mainRailX},${secY + 25} `;
 
-      // Outer Via Circle
       const viaOuter = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-      viaOuter.setAttribute("cx", branchX);
-      viaOuter.setAttribute("cy", secY);
-      viaOuter.setAttribute("r", "6");
-      viaOuter.setAttribute("class", "via-node");
-      viaOuter.setAttribute("id", `via-${sec.id}`);
+      viaOuter.setAttribute("cx", branchX); viaOuter.setAttribute("cy", secY);
+      viaOuter.setAttribute("r", "6"); viaOuter.setAttribute("class", "via-node");
       viaContainer.appendChild(viaOuter);
 
-      // Inner Via Hole
       const viaInner = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-      viaInner.setAttribute("cx", branchX);
-      viaInner.setAttribute("cy", secY);
-      viaInner.setAttribute("r", "2");
-      viaInner.setAttribute("fill", "var(--bg)");
+      viaInner.setAttribute("cx", branchX); viaInner.setAttribute("cy", secY);
+      viaInner.setAttribute("r", "2"); viaInner.setAttribute("fill", "var(--bg)");
       viaContainer.appendChild(viaInner);
 
-      // Add SMD Test Pad decorative traces branching off
-      const smdPad = document.createElementNS("http://www.w3.org/2000/svg", "rect");
-      smdPad.setAttribute("x", branchX + 12);
-      smdPad.setAttribute("y", secY - 3);
-      smdPad.setAttribute("width", "8");
-      smdPad.setAttribute("height", "6");
-      smdPad.setAttribute("rx", "1");
-      smdPad.setAttribute("fill", "none");
-      smdPad.setAttribute("stroke", "var(--line)");
-      smdPad.setAttribute("stroke-width", "1.5");
-      viaContainer.appendChild(smdPad);
-
-      sectionViaData.push({
-        id: sec.id,
-        element: sec,
-        viaNode: viaOuter,
-        triggerY: secY
-      });
+      sectionViaData.push({ element: sec, viaNode: viaOuter, triggerY: secY });
     });
 
     pathD += `L ${mainRailX},${docHeight}`;
     path.setAttribute("d", pathD);
 
-    // Build 45-degree Diverging Routing trace off the main trace rail to a floating pad
-    const divPathD = `M ${mainRailX},${divBranchStartY} ` +
-                     `L ${mainRailX + 45},${divBranchStartY + 45} ` +
-                     `L ${divTargetX - 40},${divBranchStartY + 45} ` +
-                     `L ${divTargetX},${divBranchStartY + 85} ` +
-                     `L ${divTargetX},${divTargetY}`;
+    const divPathD = `M ${mainRailX},${divBranchStartY} L ${mainRailX + 45},${divBranchStartY + 45} L ${divTargetX - 40},${divBranchStartY + 45} L ${divTargetX},${divBranchStartY + 85} L ${divTargetX},${divTargetY}`;
     divPath.setAttribute("d", divPathD);
-
-    // Endpoint Via Pad on Diverging Branch
-    const divVia = document.createElementNS("http://www.w3.org/2000/svg", "circle");
-    divVia.setAttribute("cx", divTargetX);
-    divVia.setAttribute("cy", divTargetY);
-    divVia.setAttribute("r", "5");
-    divVia.setAttribute("fill", "var(--copper-bright)");
-    divVia.setAttribute("stroke", "var(--copper)");
-    divVia.setAttribute("stroke-width", "2");
-    viaContainer.appendChild(divVia);
 
     const pathLength = path.getTotalLength();
     path.style.strokeDasharray = `${pathLength} ${pathLength}`;
@@ -788,62 +512,62 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   let lengths = updateSideCircuitPath();
+  window.addEventListener("resize", () => { lengths = updateSideCircuitPath(); onScroll(); });
 
-  window.addEventListener("resize", () => {
-    lengths = updateSideCircuitPath();
-    onScroll();
-  });
-
-  // Synchronize Scroll along PCB Bus with Copper Highlights and Branching
   function onScroll() {
     const scrollTop = window.scrollY;
     const viewportHeight = window.innerHeight;
     const maxScroll = document.documentElement.scrollHeight - viewportHeight;
-    
     if (maxScroll <= 0) return;
 
     const scrollPercentage = Math.min(Math.max(scrollTop / maxScroll, 0), 1);
     
-    // Main Rail Trace Fill
-    const drawLength = lengths.pathLength * scrollPercentage;
-    path.style.strokeDashoffset = lengths.pathLength - drawLength;
-
-    // Diverging Branch Trace Fill (triggers progressively)
-    const divDraw = lengths.divPathLength * Math.min(Math.max((scrollPercentage - 0.25) * 2.5, 0), 1);
-    divPath.style.strokeDashoffset = lengths.divPathLength - divDraw;
+    path.style.strokeDashoffset = lengths.pathLength - (lengths.pathLength * scrollPercentage);
+    divPath.style.strokeDashoffset = lengths.divPathLength - (lengths.divPathLength * Math.min(Math.max((scrollPercentage - 0.25) * 2.5, 0), 1));
 
     const scrollPoint = scrollTop + (viewportHeight * 0.4);
-
     sectionViaData.forEach((item) => {
       if (scrollPoint >= item.triggerY - 80) {
-        item.viaNode.classList.add("lit");
-        item.element.classList.add("section-active");
+        item.viaNode.classList.add("lit"); item.element.classList.add("section-active");
       } else {
-        item.viaNode.classList.remove("lit");
-        item.element.classList.remove("section-active");
+        item.viaNode.classList.remove("lit"); item.element.classList.remove("section-active");
       }
     });
   }
-
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
-  // Trigger reveal animation on Experience section
-  if (experienceTarget) {
-    experienceTarget.classList.add("experience-animate");
-
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add("is-visible");
+  // 5. Initialize Intersection Observers (for Reveals and Progress Bars)
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting) {
+        const el = entry.target;
+        
+        // Handle normal reveals
+        if (el.classList.contains('reveal') || el.classList.contains('about-card')) {
+          if (window.anime && !reduceMotion) {
+            anime({ targets: el, opacity: [0, 1], translateY: [24, 0], duration: 700, easing: 'easeOutCubic' });
+          } else {
+            el.style.opacity = 1; el.style.transform = 'none';
+          }
         }
-      });
-    }, { threshold: 0.15 });
+        
+        // Handle Progress bars
+        if (el.classList.contains('skill-fill') && !reduceMotion) {
+          el.style.width = el.getAttribute('data-percent') + '%';
+        } else if (el.classList.contains('skill-fill') && reduceMotion) {
+           el.style.width = el.getAttribute('data-percent') + '%';
+           el.style.transition = 'none';
+        }
+        
+        io.unobserve(el);
+      }
+    });
+  }, { threshold: 0.15 });
 
-    observer.observe(experienceTarget);
-  }
+  document.querySelectorAll('.reveal, .about-card, .skill-fill').forEach((el) => { io.observe(el); });
 
-  // ---- Original Typing Animation ----
+  // Typwriter effect
   const fullText = "Designs circuits, builds hardware & ships software.";
   const target = document.getElementById('typeTarget');
   if (reduceMotion) {
@@ -851,41 +575,10 @@ document.addEventListener("DOMContentLoaded", () => {
   } else {
     let i = 0;
     function typeNext() {
-      if (i <= fullText.length) {
-        target.textContent = fullText.slice(0, i);
-        i++;
-        setTimeout(typeNext, 75);
-      }
+      if (i <= fullText.length) { target.textContent = fullText.slice(0, i); i++; setTimeout(typeNext, 75); }
     }
     typeNext();
   }
-
-  // ---- Hero Entrance ----
-  if (window.anime && !reduceMotion) {
-    anime.timeline({ easing: 'easeOutExpo' })
-      .add({ targets: '.hero h1', opacity: [0, 1], translateY: [26, 0], duration: 700 })
-      .add({ targets: '.hero-tag', opacity: [0, 1], translateY: [10, 0], duration: 500 }, '-=300')
-      .add({ targets: '.hero-sub', opacity: [0, 1], translateY: [16, 0], duration: 600 }, '-=300')
-      .add({ targets: '.scroll-cue', opacity: [0, 1], translateY: [10, 0], duration: 500 }, '-=300');
-  } else {
-    document.querySelectorAll('.hero h1, .hero-tag, .hero-sub, .scroll-cue').forEach(e => { e.style.opacity = 1; });
-  }
-
-  // ---- General Scroll Reveal Elements ----
-  const io = new IntersectionObserver((entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const el = entry.target;
-        if (window.anime && !reduceMotion) {
-          anime({ targets: el, opacity: [0, 1], translateY: [24, 0], duration: 700, easing: 'easeOutCubic' });
-        } else {
-          el.style.opacity = 1; el.style.transform = 'none';
-        }
-        io.unobserve(el);
-      }
-    });
-  }, { threshold: 0.15 });
-  document.querySelectorAll('.reveal, .about-card').forEach((el) => { io.observe(el); });
 });
 </script>
 </body>
