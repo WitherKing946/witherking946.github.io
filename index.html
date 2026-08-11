@@ -463,23 +463,25 @@ document.addEventListener("DOMContentLoaded", async () => {
   function updateSideCircuitPath() {
     const docHeight = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
     const docWidth = window.innerWidth;
+    
+    // Calculate positions
     const mainRailX = Math.max(30, Math.min(docWidth * 0.05, 45));
-    const branchX = mainRailX + 35;
+    const branchX = mainRailX + 35; // Position for the vias
 
     svgCanvas.setAttribute("viewBox", `0 0 ${docWidth} ${docHeight}`);
     viaContainer.innerHTML = '';
     sectionViaData = [];
 
-    let pathD = `M ${mainRailX},0 `;
-    let divBranchStartY = docHeight * 0.35;
-    let divTargetX = Math.min(docWidth * 0.85, mainRailX + 280);
-    let divTargetY = docHeight * 0.52;
+    // Main rail goes straight down now
+    let pathD = `M ${mainRailX},0 L ${mainRailX},${docHeight}`;
+    let divPathD = "";
 
     sections.forEach((sec) => {
       const rect = sec.getBoundingClientRect();
       const secY = rect.top + window.scrollY + 35;
       
-      pathD += `L ${mainRailX},${secY - 25} L ${mainRailX + 10},${secY - 15} L ${branchX - 10},${secY - 15} L ${branchX},${secY} L ${branchX - 10},${secY + 15} L ${mainRailX + 10},${secY + 15} L ${mainRailX},${secY + 25} `;
+      // Draw 45-degree chamfered routes that diverge directly to the vias
+      divPathD += `M ${mainRailX},${secY - 15} L ${mainRailX + 15},${secY} L ${branchX},${secY} `;
 
       const viaOuter = document.createElementNS("http://www.w3.org/2000/svg", "circle");
       viaOuter.setAttribute("cx", branchX); viaOuter.setAttribute("cy", secY);
@@ -494,10 +496,7 @@ document.addEventListener("DOMContentLoaded", async () => {
       sectionViaData.push({ element: sec, viaNode: viaOuter, triggerY: secY });
     });
 
-    pathD += `L ${mainRailX},${docHeight}`;
     path.setAttribute("d", pathD);
-
-    const divPathD = `M ${mainRailX},${divBranchStartY} L ${mainRailX + 45},${divBranchStartY + 45} L ${divTargetX - 40},${divBranchStartY + 45} L ${divTargetX},${divBranchStartY + 85} L ${divTargetX},${divTargetY}`;
     divPath.setAttribute("d", divPathD);
 
     const pathLength = path.getTotalLength();
@@ -522,8 +521,9 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     const scrollPercentage = Math.min(Math.max(scrollTop / maxScroll, 0), 1);
     
+    // Sync the main rail and the diverging routes together
     path.style.strokeDashoffset = lengths.pathLength - (lengths.pathLength * scrollPercentage);
-    divPath.style.strokeDashoffset = lengths.divPathLength - (lengths.divPathLength * Math.min(Math.max((scrollPercentage - 0.25) * 2.5, 0), 1));
+    divPath.style.strokeDashoffset = lengths.divPathLength - (lengths.divPathLength * scrollPercentage);
 
     const scrollPoint = scrollTop + (viewportHeight * 0.4);
     sectionViaData.forEach((item) => {
