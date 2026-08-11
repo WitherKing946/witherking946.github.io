@@ -1,0 +1,58 @@
+{
+  "skills": [
+    {
+      "category": "Hardware & PCB Design",
+      "items": [
+        { "name": "Custom PCB Layout (KiCad)", "percent": 95 },
+        { "name": "ESP32 / STM32 Architecture", "percent": 90 },
+        { "name": "Power Management & LDOs", "percent": 85 }
+      ]
+    },
+    {
+      "category": "Embedded & RTL Systems",
+      "items": [
+        { "name": "I2C / SPI / UART Protocols", "percent": 95 },
+        { "name": "Verilog HDL & Logic Design", "percent": 80 },
+        { "name": "Sensor Fusion (IMU / Radar)", "percent": 85 }
+      ]
+    },
+    {
+      "category": "Software & App Stack",
+      "items": [
+        { "name": "React Native / Expo", "percent": 85 },
+        { "name": "Firebase & Data Persistence", "percent": 80 },
+        { "name": "JavaScript / Python", "percent": 75 }
+      ]
+    }
+  ],
+  "projects": [
+    {
+      "title": "Combat Automated Therapy System",
+      "tag": "Hardware",
+      "tagClass": "hw",
+      "desc": "Modular wearable electrotherapy device featuring an STM32 micro-controlled hub linked to digital potentiometers and emergency backup interfaces.",
+      "stack": ["STM32", "Electrotherapy", "PCB"]
+    },
+    {
+      "title": "xytoolbox Application",
+      "tag": "Software",
+      "tagClass": "sw",
+      "desc": "Modular engineering utility suite application utilizing React Native, Expo, asynchronous storage persistence, and Firebase integration.",
+      "stack": ["React Native", "Expo", "Firebase"]
+    },
+    {
+      "title": "Autonomous Aerial Telemetry Unit",
+      "tag": "Hardware",
+      "tagClass": "hw",
+      "desc": "Integrated mmWave radar and motion sensors into an aerial drone (Project Vital) to process and send live sub-surface micro-motion telemetry data.",
+      "stack": ["ESP32", "mmWave", "Telemetry"]
+    },
+    {
+      "title": "Precision Digital Weight System",
+      "tag": "Hardware",
+      "tagClass": "hw",
+      "desc": "Built a digital scale using an Arduino Nano, an HX711 amplifier, and a load cell with automatic tare logic and an I2C display.",
+      "stack": ["Arduino", "HX711", "I2C"]
+    }
+  ]
+}
